@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.paulfries</groupId>
+	<artifactId>bridges</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>bridge game generator</name>
+	<description></description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<src.main.java.dir>src/main/java</src.main.java.dir>
+		<src.test.java.dir>src/test/java</src.test.java.dir>
+		<!-- dependencies -->
+		<!-- maven plugins -->
+		<maven.compiler-plugin.version>3.8.1</maven.compiler-plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>16</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-graphics</artifactId>
+			<version>16</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler-plugin.version}</version>
+				<configuration>
+					<source>16</source>
+					<target>16</target>
+					<compilerVersion>16</compilerVersion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>0.0.1</version>
+				<configuration>
+					<mainClass>com.paulfries.antsimulation.AntSimulation</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
