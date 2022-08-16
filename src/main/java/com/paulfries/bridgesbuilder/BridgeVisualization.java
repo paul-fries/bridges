@@ -3,8 +3,11 @@ package com.paulfries.bridgesbuilder;
 import java.util.List;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -25,14 +28,16 @@ public class BridgeVisualization extends Application {
 
 	private static char[][] layout = (new BridgesBuilder()).handOverLayout();
 	@Override
-	public void start(Stage stage) {
-
+	public void start(Stage stage) {	
+		
 		// Create JavaFx
 		GridPane root = new GridPane();
 		Scene scene = new Scene(root, 2*WIDTH, HEIGHT);
 		stage.setScene(scene);
 		stage.show();
-
+		
+		Button button = new Button("show solution");
+		
 		Pane paneLeft = new Pane();
 		paneLeft.setMaxSize(WIDTH, HEIGHT);
 
@@ -41,9 +46,19 @@ public class BridgeVisualization extends Application {
 
 		root.add(paneLeft, 0, 0);
 		root.add(paneRight, 1, 0);
+		root.add(button, 2, 0);
 		
-		renderLayout(layout, paneLeft, true);
-		renderLayout(layout, paneRight, false);
+		paneRight.setVisible(false);
+		
+		renderLayout(layout, paneRight, true);
+		renderLayout(layout, paneLeft, false);
+		
+		 button.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	paneRight.setVisible(true);
+	            }
+	        });
 	}
 
 	public static void main(String[] args) {
